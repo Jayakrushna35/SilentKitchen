@@ -3,6 +3,7 @@ const colors = require("colors");
 const cors = require("cors");
 const morgan = require("morgan");
 const dotenv = require("dotenv");
+const router = require("./routes/testRoutes");
 
 //test object
 const app = express();
@@ -13,6 +14,9 @@ dotenv.config();
 app.use(cors());
 app.use(express.json());
 app.use(morgan('dev'));
+app.use('/api/v1/test',require("./routes/testRoutes"))
+//route
+// app.get('/',router);
 
 const PORT = process.env.PORT || 8080;
 
