@@ -11,16 +11,17 @@ const app = express();
 
 //dot env configuration
 dotenv.config();
-
+ 
 //mongodb connection
 connectDb();
 
 //middleware
-app.use(cors());
+app.use(cors());  
 app.use(express.json());
 app.use(morgan('dev'));
-app.use('/api/v1/test',require("./routes/testRoutes"));
 //route
+app.use('/api/v1/test',require("./routes/testRoutes"));
+app.use('/api/v1/auth',require("./routes/authRoutes"));
 app.get('/',router);
 
 const PORT = process.env.PORT || 8080;
