@@ -1,4 +1,5 @@
 const usermodel = require("../models/usermodel");
+const bcrypt = require('bcrypt');
 
 const registerController = async (req,res) => {
   try {
@@ -26,6 +27,7 @@ const registerController = async (req,res) => {
         message:'Sucessfully Register'
     })
 
+
   } catch (error) {
     console.log(error)
     res.status(500).send({
@@ -44,7 +46,7 @@ const loginController = async(req,res) =>{
     if(!email || !password){
         return res.status(500).send({
           sucess:false,
-          message:"please provide eamil and password",
+          message:"please provide email and password",
         })
     }
     //check user
